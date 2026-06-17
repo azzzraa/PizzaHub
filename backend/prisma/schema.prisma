@@ -22,4 +22,12 @@ model User {
   password  String
   role      String   @default("customer")
   createdAt DateTime @default(now())
+
+}
+
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  total     Float
+  createdAt DateTime @default(now())
 }
