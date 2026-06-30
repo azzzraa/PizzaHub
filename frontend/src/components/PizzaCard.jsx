@@ -1,4 +1,4 @@
-function PizzaCard({ pizza }) {
+function PizzaCard({ pizza, addToCart }) {
   return (
     <div className="pizza-card">
       <img src={pizza.image} alt={pizza.name} />
