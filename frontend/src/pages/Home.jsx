@@ -7,6 +7,7 @@ import Cart from "../components/Cart";
 function Home() {
   const [pizzas, setPizzas] = useState([]);
   const [cart, setCart] = useState([]);
+  const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
 
@@ -42,51 +43,57 @@ function Home() {
 };
 
 const placeOrder = () => {
-  console.log("Order placed!");
-  console.log(cart);
-};
+  setMessage("Order placed successfully! 🎉");
+  setCart([]);
 
+  setTimeout(() => {
+    setMessage("");
+  }, 3000);
+
+};
 const handleLogout = () => {
   localStorage.removeItem("token");
   window.location.reload();
 };
 
   return (
-    <div className="app">
-      <Navbar cart={cart} />
+  <div className="app">
+    <Navbar cart={cart} />
 
-      {token && (
-        <div>
-          <h3>You are logged in</h3>
-          <button onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      )}
+    {token && (
+      <div>
+        <h3>You are logged in</h3>
+        <button onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+    )}
 
-      <Hero />
+    <Hero />
 
-      <section className="menu-section">
-        <h2>Our Menu 🍕</h2>
+    {message && <p>{message}</p>}
 
-       <Cart
-  cart={cart}
-  placeOrder={placeOrder}
-  setCart={setCart}
-/>
+    <section className="menu-section">
+      <h2>Our Menu 🍕</h2>
 
-        <div className="pizza-grid">
-          {pizzas.map((pizza) => (
-            <PizzaCard
-              key={pizza.id}
-              pizza={pizza}
-              addToCart={addToCart}
-            />
-          ))}
-        </div>
-      </section>
-    </div>
-  );
+      <Cart
+        cart={cart}
+        placeOrder={placeOrder}
+        setCart={setCart}
+      />
+
+      <div className="pizza-grid">
+        {pizzas.map((pizza) => (
+          <PizzaCard
+            key={pizza.id}
+            pizza={pizza}
+            addToCart={addToCart}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+);
 }
 
 export default Home;

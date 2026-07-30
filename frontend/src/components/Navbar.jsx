@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 
-
-const token = localStorage.getItem("token");
-
 function Navbar({ cart }) {
+  const token = localStorage.getItem("token");
+
   return (
     <nav className="navbar">
       <h2>PizzaHub 🍕</h2>
@@ -22,12 +21,12 @@ function Navbar({ cart }) {
         </li>
 
         {token ? (
-  <li>Logout</li>
-) : (
-  <li>
-    <Link to="/login">Login</Link>
-  </li>
-)}
+          <li>Logout</li>
+        ) : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

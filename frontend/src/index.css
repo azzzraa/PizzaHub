@@ -1,34 +1,49 @@
-body {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #121212;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
   color: white;
+  font-weight: bold;
 }
 
-.app {
-  padding: 40px;
+.navbar a:hover {
+  color: orange;
+}
+button {
+  background: orange;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
+button:hover {
+  background: darkorange;
 }
-
-.pizza-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
 .pizza-card {
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.pizza-card img {
+.pizza-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.pizza-card button {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+  margin-top: 10px;
 }
